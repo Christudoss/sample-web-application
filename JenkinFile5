@@ -13,10 +13,8 @@ pipeline{
               stage('Quality Gate Status Check'){
                   steps{
                       sh "mvn clean install"
-                 	}
-
-               	 }  
+               	  }  
               }	
 		
-            }	       	     	         
+          }	       	     	         
 }
