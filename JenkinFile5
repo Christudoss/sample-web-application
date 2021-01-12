@@ -1,0 +1,22 @@
+pipeline{
+
+      agent {
+                dockerfile {
+                    filename 'Dockerfile1'
+                    args '-v $HOME/.m2:/root/.m2'
+                }
+            }
+        
+	
+        stages{
+
+              stage('Quality Gate Status Check'){
+                  steps{
+                      sh "mvn clean install"
+                 	}
+
+               	 }  
+              }	
+		
+            }	       	     	         
+}
