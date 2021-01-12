@@ -6,13 +6,14 @@ pipeline{
                 args '-v $HOME/.m2:/root/.m2'
                 }
             }
-        def mvnHome = tool name: 'Maven  setting', type: 'maven'
+        
 	
         stages{
 
               stage('Quality Gate Status Check'){
                   steps{
                       script{
+			      def mvnHome = tool name: 'Maven  setting', type: 'maven'
 			      sh "${mvnHome}/bin/mvn clean install"
                  	}
 
