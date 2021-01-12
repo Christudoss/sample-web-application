@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
 
       agent {
                 dockerfile {
@@ -8,13 +8,18 @@ pipeline{
             }
         
 	
-        stages{
+        stages {
 
-              stage('Quality Gate Status Check'){
+              stage('Quality Gate Status Check') {
                   steps{
                       sh "mvn clean install"
                	  }  
               }	
 		
-          }	       	     	         
+          }	
+	  post {
+	  	always {
+			cleanWs()
+		}
+	  }
 }
