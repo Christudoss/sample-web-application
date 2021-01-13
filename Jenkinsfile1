@@ -43,7 +43,8 @@ pipeline{
                 {
               steps{
                   script{
-		  sh 'cp -r ../commit-based-job@2/target .'
+		  sh 'cp -r ../commit-based-job@3/target .'
+		  sh 'echo $Docker_tag'
                   sh 'docker build . -t christudoss/devops-practice:$Docker_tag'
 		  withCredentials([string(credentialsId: 'docker_password', variable: 'docker_password')]) {			    
 				  sh 'docker login -u christudoss -p $docker_password'
